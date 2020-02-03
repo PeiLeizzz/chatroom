@@ -1,0 +1,109 @@
+body
+{
+    padding: 50px;
+    font: 14px "Lucida Granda", Helvetica, Arial, sans-serif;
+}
+
+a
+{
+    color: #00B7FF;
+}
+
+#content
+{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#room
+{
+    background-color: #ccc;
+    margin-bottom: lem;
+    text-align: center;
+    border-radius: 4px;
+    cursor: default;
+}
+
+#roomList
+{
+    float: right;
+    width: 100px;
+    height: 300px;
+    overflow: auto;
+}
+
+#roomList div
+{
+    border-radius: 4px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+#roomList div:hover
+{
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+#messages
+{
+    width: 700px;
+    height: 300px;
+    overflow: auto;
+    background-color: #eee;
+    margin-bottom: lem;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+#systemMessages
+{
+    color: red;
+}
+
+#sendMessage
+{
+    width: 696px;
+    height: 20px;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding-left: 3px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-family: "宋体";
+    font-size: 13px;
+    outline-style: none;
+}
+
+#sendButton
+{
+    border-radius: 4px;
+    border: 1px solid #eee;
+    width: 60px;
+    height: 23px;
+}
+
+#sendButton:hover
+{
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+#chatCommands
+{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#help
+{
+    font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#help ul
+{
+    list-style-type: none;
+    margin-top: -10px;
+    margin-left: -40px;
+}
