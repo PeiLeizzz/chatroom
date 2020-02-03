@@ -4,15 +4,21 @@ var Chat = function(socket)
         this.socket = socket
     }
 
-// 发送聊天消息
-Chat.prototype.sendMessage = function(room, text)
+// 发送其他人的聊天消息
+Chat.prototype.sendOthersMessage = function(room, text)
     {
         var message = 
         {
             room: room,
             text: text
         }
-        this.socket.emit('message', message)
+        this.socket.emit('othersMessage', message)
+    }
+
+// 发送自己的聊天消息
+Chat.prototype.sendMyMessage = function(message)
+    {
+        this.socket.emit('myMessage', message)
     }
 
 // 变更房间

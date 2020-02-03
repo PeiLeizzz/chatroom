@@ -57,9 +57,14 @@ a
     border-radius: 4px;
 }
 
-#systemMessages
+#systemMessage
 {
     color: red;
+}
+
+#MyMessage
+{
+    color: #00B7FF;
 }
 
 #sendMessage
@@ -92,7 +97,7 @@ a
 
 #chatCommands
 {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
 }
 

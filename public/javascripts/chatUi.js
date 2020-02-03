@@ -1,13 +1,19 @@
 // 显示可疑文本
-function divEscapedContentElement(message)
+function divOthersEscapedContentElement(message)
 {
     return $('<div></div>').text(message)
+}
+
+//显示用户自己的可疑的内容
+function divMyEscapedContentElement(message)
+{
+    return $('<div id="MyMessage"></div>').text(message)
 }
 
 // 显示系统创建的受信内容
 function divSystemContentElement(message)
 {
-    return $('<div></div>').html('<i id="systemMessages">' + message + '</i>')
+    return $('<div></div>').html('<i id="systemMessage">' + message + '</i>')
 }
 
 // 处理原始的用户输入
@@ -24,11 +30,11 @@ function processUserInput(chatApp, socket)
             $('#messages').append(divSystemContentElement(systemMessage))
         }
     }
-    // 将非命令输入广播给其他用户
+    // 将非命令输入广播给其他用户（和自己）
     else
     {
-        chatApp.sendMessage($('#room').text(), message)
-        $('#messages').append(divEscapedContentElement(message))
+        chatApp.sendMyMessage(message)
+        chatApp.sendOthersMessage($('#room').text(), message)
         $('#messages').scrollTop($('#messages').prop('scrollHeight'))
     }
     $('#sendMessage').val('')
@@ -62,12 +68,22 @@ $(document).ready(function()
             $('#messages').append(divSystemContentElement('Room changed.'))
         })
 
-        // 显示接收到的消息
-        socket.on('message', function(message)
+        //显示自己的消息
+        socket.on('myMessage', function(message)
         {
-            var newElement = $('<div></div>').text(message.text)
-            $('#messages').append(newElement)
-            // $('#messages').append(divEscapedContentElement(message.text)) 可否？
+            $('#messages').append(divMyEscapedContentElement(message.text))
+        })
+
+        // 显示接收到的其他用户的消息
+        socket.on('othersMessage', function(message)
+        {
+            $('#messages').append(divOthersEscapedContentElement(message.text))
+        })
+
+        // 显示接收到的系统的消息
+        socket.on('systemMessage', function(message)
+        {
+            $('#messages').append(divSystemContentElement(message.text))
         })
 
         // 显示可用房间列表
@@ -79,7 +95,7 @@ $(document).ready(function()
                 room = room.substring(1, room.length)
                 if (room != '')
                 {
-                    $('#roomList').append(divEscapedContentElement(room))
+                    $('#roomList').append(divOthersEscapedContentElement(room))
                 }
             }
             // 点击房间名可以换到那个房间中
