@@ -1,3 +1,4 @@
+// peilei email: 714838284@qq.com
 // 相当于定义一个类，在初始化时传入一个Socket.io的参数socket
 var Chat = function(socket)
     {

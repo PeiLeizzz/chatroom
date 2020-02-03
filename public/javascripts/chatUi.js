@@ -1,3 +1,4 @@
+// peilei email: 714838284@qq.com
 // 显示可疑文本
 function divOthersEscapedContentElement(message)
 {
@@ -119,5 +120,6 @@ $(document).ready(function()
             processUserInput(chatApp, socket)
             return false
             // 这个return有什么用？
+            // 答：阻止表单的自动提交，即关闭了主线程的提交
         })
     })
